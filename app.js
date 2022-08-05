@@ -2,7 +2,15 @@ let weather = {
     "apiKey": "d3243fa6d5394ffa8d9163628220308 ",
     fetchTheWeather: function (city) {
         fetch("https://api.weatherapi.com/v1/current.json?key=+" + this.apiKey + "&q=" + city + " &aqi=no"
-        ).then((response) => response.json())
+        ).then((response) => {
+            if (!response) {
+
+
+                alert("no data found")
+                throw new Error("no data found");
+            } return response.json()
+
+        })
             .then((data) => this.displayWeather(data))
     },
     displayWeather: function (data) {
