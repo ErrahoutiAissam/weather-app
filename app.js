@@ -4,8 +4,6 @@ let weather = {
         fetch("https://api.weatherapi.com/v1/current.json?key=+" + this.apiKey + "&q=" + city + " &aqi=no"
         ).then((response) => {
             if (!response) {
-
-
                 alert("no data found")
                 throw new Error("no data found");
             } return response.json()
@@ -27,6 +25,7 @@ let weather = {
         document.querySelector(".wind-speed").innerText = "Wind Speed : " + wind_kph + "km/h"
         document.querySelector(".humidity").innerText = "Humidity : " + humidity + "%"
         document.querySelector(".container2").classList.remove("loading")
+        // the bacground displayed is an image of the city searched
         document.querySelector("body").style.backgroundImage = "url('https://source.unsplash.com/random/?" + name + "')";
 
     },
@@ -45,4 +44,4 @@ document.querySelector(".search-input").addEventListener("keyup", (e) => {
     }
 })
 
-weather.fetchTheWeather("rabat")
+weather.fetchTheWeather("Al hoceima")
